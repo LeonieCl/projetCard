@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <title>Gestion de projet</title>
+    </head>
+    <body>
+        <header>
+            <p class="h3-col-sm" id="nom-prenom">CardsMemo</p>
+            <nav>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item"><a class="nav-link disabled" href="index.html"><img class="img-user p-2"src="img/user.png" alt="user">Compte</a></li>
+            </nav>
+        </header>
+        <main class="mainScroll">
+            <div class="centrerMain" id="colonne">
+            <div class="ajouter">
+                <img type="image" src="img/add.png" id="aff" onclick=afficher()>
+            </div> 
+
+            <div id="mB" class="menuAjouter">
+                <div class="d-block p-0 bg-black">
+                    <h3 class="p-1">
+                        Ajouter une colonne
+                    </h3>
+                </div>
+                    <form class="d-block p-1 bg-black text-secondary">
+                        <label>Nom de la colonne:</label>
+                        <input type="text" id="titre" name="titre" value="">
+                        <input type="button" id="bouton" value="Ajouter" onclick=ajouterColonne(document.getElementById("colonne"))>
+                    </form>
+                
+                    <h3 class="pl-1 pt-5">
+                        Ajouter une carte
+                    </h3>
+
+                    <form  class="d-block p-1 bg-black text-secondary">
+
+                        <label>Veuillez sélectionner la colonne où vous voulez l'insérer:</label>
+
+                            <select id="numColonne" class="custom-select w-100 col-md-6">
+                                <option value="default" selected>Sélectionner une colonne</option>
+                                <option value="col1">Backlog</option>
+                                <option value="col2">A faire</option>
+                                <option value="col3">En cours</option>
+                                <option value="col4">Fait</option>
+                            </select>
+
+                        <div class="d-block pt-1">
+                            <label>Titre de la carte:</label>
+                            <input type="text" id="titreNouvelleCard" name="titre" value="">
+                        </div>
+
+                        <div class="d-block pt-1">
+                            <label>Description de la carte:</label>
+                            <textarea id="descriptionNouvelleCard" class="align-middle w-75"></textarea>
+                        </div>
+
+                        <label>Veuillez choisir une couleur:</label>
+                                <select id="colorCard" class="custom-select w-100 col-md-6">
+                                    <option value="default" selected>Sélectionner une couleur</option>
+                                    <option value="secondary">Gris</option>
+                                    <option value="primary">Bleu</option>
+                                    <option value="success">Vert</option>
+                                    <option value="danger">Rouge</option>
+                                    <option value="warning">Jaune</option>
+                                </select>
+
+                        <input type="button" id="bouton" class="ml-5 mt-3 pl-4 pr-4 pt-1 pb-1" value="Insérer" onclick=creer()>
+                    </form>
+
+                    <h3 class="pl-1 pt-5">
+                        Modifier le nom d'une colonne:
+                    </h3>
+
+                    <form  class="d-block p-1 bg-black text-secondary">
+                        <label>Veuillez sélectionner la colonne:</label>
+                                <select id="selectModifier" class="custom-select w-100 col-md-6">
+                                    <option selected>Sélectionner une colonne</option>
+                                    <option value="titreCol1">Backlog</option>
+                                    <option value="titreCol2">A faire</option>
+                                    <option value="titreCol3">En cours</option>
+                                    <option value="titreCol4">Fait</option>
+                                </select>
+
+                    <div class="d-block pt-1">
+                        <label>Veuillez écrire le nouveau nom:</label>
+                        <input type="text" id="titreModifier" name="titre" value="">
+                    </div>
+
+                        <input type="button" id="bouton" value="Supprimer" onclick=modifierColonne()>
+                    </form>
+
+                    <h3 class="pl-1 pt-5">
+                        Supprimer une colonne
+                    </h3>
+
+                    <form  class="d-block p-1 bg-black text-secondary">
+                        <label>Veuillez sélectionner la colonne:</label>
+                                <select id="supprColonne" class="custom-select w-100 col-md-6">
+                                    <option selected>Sélectionner une colonne</option>
+                                    <option value="container1">Backlog</option>
+                                    <option value="container2">A faire</option>
+                                    <option value="container3">En cours</option>
+                                    <option value="container4">Fait</option>
+                                </select>
+
+                        <input type="button" id="bouton" value="Supprimer" onclick=supprimerColonne(document.getElementById("supprColonne"))>
+                    </form>
+                
+
+                <img class="flecheRetour" type="image" src="img/down-arrow.png" id="enl" onclick=enlever()>
+            </div>
+
+            <div id="container1" class="d-inline-flex ml-lg-5 ml-md-0 col-lg-2 p-2 shadow-lg mt-5 mb-5 rounded">
+                <div class="col-sm-12 p-0 float-left"> <!--Alignement top-->
+                    <h2 id="titreCol1" class="titre mt-2" contentEditable = "true">Backlog</h2>
+                        <div class="trait"></div>
+
+                            <div id="col1" class="conteneur">
+
+                                <div class="card mt-4" id="col1Card1">
+                                    <input id="col1TitreCard1" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                    <div id="col1cardBody1" class="card-body">
+                                        <p id="p1"><textarea id="col1Description1" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                        <button id="col1BouttonModifier1" type="button" class="btn btn-dark" onclick=modifier("col1BouttonModifier1","col1","1")>Modifier</button>
+                                        <button type="button" class="btn btn-danger" onclick=supprimer("col1Card1")>X</button>
+                                    </div>
+                                </div>
+
+                                <div class="card mt-4" id="col1Card2">
+                                    <input id="col1TitreCard2" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                    <div id="col1cardBody2" class="card-body">
+                                        <p><textarea id="col1Description2" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                        <button id="col1BouttonModifier2" type="button" class="btn btn-dark" onclick=modifier("col1BouttonModifier2","col1","2")>Modifier</button>
+                                        <button type="button" class="btn btn-danger" onclick=supprimer("col1Card2")>X</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                </div>
+            </div>
+                
+
+            <div id="container2" class="d-inline-flex ml-lg-5 col-lg-2 p-2 shadow-lg mt-5 mb-5 rounded">
+                <div class="col-sm-12 p-0"> <!--Alignement top-->
+                    <h2 id="titreCol2" class="titre mt-2">A faire</h2>
+                    <div class="trait"></div>
+                        <div id="col2" class="conteneur">
+
+                            <div class="card mt-4" id="col2Card1">
+                                <input id="col2TitreCard1" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                <div id="col2cardBody1" class="card-body">
+                                    <p><textarea id="col2Description1" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                    <button id="col2BouttonModifier1" type="button" class="btn btn-dark" onclick=modifier("col2BouttonModifier1","col2","1")>Modifier</button>
+                                    <button type="button" class="btn btn-danger" onclick=supprimer("col2Card1")>X</button>
+                                </div>
+                            </div>
+                            <div class="card mt-4" id="col2Card2">
+                                <input id="col2TitreCard2" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                <div id="col2cardBody2" class="card-body">
+                                    <p><textarea id="col2Description2" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                    <button id="col2BouttonModifier2" type="button" class="btn btn-dark" onclick=modifier("col2BouttonModifier2","col2","2")>Modifier</button>
+                                    <button type="button" class="btn btn-danger" onclick=supprimer("col2Card2")>X</button>
+                                </div>
+                            </div>
+                            <div class="card mt-4" id="col2Card3">
+                                <input id="col2TitreCard3" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                <div id="col2cardBody3" class="card-body">
+                                    <p><textarea id="col2Description3" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                    <button id="col2BouttonModifier3" type="button" class="btn btn-dark" onclick=modifier("col2BouttonModifier3","col2","3")>Modifier</button>
+                                    <button type="button" class="btn btn-danger" onclick=supprimer("col2Card3")>X</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div id="container3" class="d-inline-flex ml-lg-5 col-lg-2 p-2 shadow-lg mt-5 mb-5 rounded">
+                <div class="col-sm-12 p-0"> <!--Alignement top-->
+                    <h2 id="titreCol3" class="titre mt-2">En cours</h2>
+                    <div class="trait"></div> 
+                        <div id="col3" class="conteneur">
+                            <div class="card mt-4" id="col3Card1">
+                                <input id="col3TitreCard1" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                <div id="col3cardBody1" class="card-body">
+                                    <p><textarea id="col3Description1" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                    <button id="col3BouttonModifier1" type="button" class="btn btn-dark" onclick=modifier("col3BouttonModifier1","col3","1")>Modifier</button>
+                                    <button type="button" class="btn btn-danger" onclick=supprimer("col3Card1")>X</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div id="container4" class="d-inline-flex ml-lg-5 col-lg-2 p-2 shadow-lg mt-5 mb-5 rounded">
+                <div class="col-sm-12 p-0"> <!--Alignement top-->
+                    <h2 id="titreCol4" class="titre mt-2">Fait</h2>
+                    <div class="trait"></div> 
+                        <div id="col4" class="conteneur">
+                            <div class="card mt-4" id="col4Card1">
+                                <input id="col4TitreCard1" class="modifier p-3" type="text" id="col1titre1" name="titre" value="" placeholder="Titre" disabled>
+                                <div id="col4cardBody1" class="card-body">
+                                    <p><textarea id="col4Description1" class="modifier w-100 bg-white" disabled></textarea></p> <!-- p sert juste à créer le conteneur, pour garder le bootstrap de la carte est ne pas avoir de problème avec les bouttons-->
+                                    <button id="col4BouttonModifier1" type="button" class="btn btn-dark" onclick=modifier("col4BouttonModifier1","col4","1")>Modifier</button>
+                                    <button type="button" class="btn btn-danger" onclick=supprimer("col4Card1")>X</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
+            </div>
+        </main>
+        <footer>
+            <p style="text-align: center" class="p-2">Copyright Léonie CLAUDE</p>
+        </footer>
+    </body>
+</html>

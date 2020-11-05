@@ -1,0 +1,160 @@
+
+h2{
+    text-align: center;
+}
+
+header {
+    background-color: white;
+    opacity: 0.9;
+    color: black;
+    height: 1%;
+}
+
+header p{
+    width: 50%;
+    display: inline-block;
+    padding-left: 10%;
+}
+
+header nav{
+    width: 40%;
+    display: inline-block;
+}
+
+
+body{
+    background: url(../img/img-groupe.png) no-repeat center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.mainScroll{
+    max-height: 850px;
+    overflow: auto;
+    white-space: nowrap;
+    position:absolute;
+    left:0;
+    top:92px;
+    width:100%;
+    height:100%;
+}
+
+.trait{
+    border-top : 2px solid #000;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 3%;
+}
+
+.titre{
+    overflow-x: hidden;
+    height: 50px;
+}
+
+.img-user{
+    width: 75px;
+    height: 75px;
+}
+
+.ajouter{
+    z-index: 30;
+}
+
+.ajouter img{
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    left:80%;
+    bottom: 3vw;
+    z-index: 80;
+}
+
+
+.menuAjouter{
+    display: none;
+    background-color: rgb(253, 233, 224);
+    border-radius: 2%;
+    position: fixed;
+    left:25vw;
+    bottom: 3vw;
+    width: 70%;
+    height: 70%;
+    z-index: 20;
+    padding: 2%;
+    overflow: auto;
+}
+
+@media (max-width: 992px) { 
+    .menuAjouter{
+        display: none;
+        background-color: rgb(253, 233, 224);
+        border-radius: 2%;
+        position: fixed;
+        left:5vw;
+        bottom: 3vw;
+        width: 90%;
+        height: 90%;
+        z-index: 20;
+        padding: 2%;
+        overflow: auto;
+    }
+    .centrerMain{
+        margin-left: 1%;
+    }
+    .ajouter img{
+        width: 200px;
+        height: 200px;
+        position: fixed;
+        left:40%;
+        bottom: 3vw;
+        z-index: 80;
+    }
+    .menuAjouter img{
+        width: 20vw;
+        height: 20vw;
+    }
+    .mainScroll{
+        max-height: 1800px;
+        overflow: auto;
+        white-space: nowrap;
+        position:absolute;
+        left:0;
+        top:65px;
+        width:100%;
+        height:100%;
+    }
+}
+
+.flecheRetour{
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+
+@media (min-width: 992px) { 
+    .centrerMain{
+        margin-left: 7%;
+    }
+} 
+
+
+.modifier:disabled{
+    border: none;
+}
+
+/*Garder les titres des cartes en noir*/
+input:disabled {
+    color: #000000!important;
+} 
+
+textarea{
+    color: #000000!important;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+}
